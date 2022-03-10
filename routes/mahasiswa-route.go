@@ -9,12 +9,12 @@ import (
 var mahasiswaController services.Crud = controllers.NewMahasiswaController()
 
 func (r *routes) mahasiswaRoute(rg *gin.RouterGroup) {
-	r.router.POST("/", mahasiswaController.Create) //find all
-	r.router.GET("/", mahasiswaController.Read)    //add data
+	r.router.POST("/", mahasiswaController.Create) //add data
+	r.router.GET("/", mahasiswaController.Read)    //find all
 
 	mhs := rg.Group("/mahasiswa")
-	mhs.GET("/:id", mahasiswaController.Read)   //find one
-	mhs.GET("/:id", mahasiswaController.Update) //update one
-	mhs.GET("/:id", mahasiswaController.Delete) //delete one
+	mhs.GET("/:id", mahasiswaController.Read)      //find one
+	mhs.PUT("/:id", mahasiswaController.Update)    //update one
+	mhs.DELETE("/:id", mahasiswaController.Delete) //delete one
 
 }
