@@ -9,11 +9,12 @@ import (
 var courseController services.Crud = controllers.NewCourseController()
 
 func (r *routes) courseRoute(rg *gin.RouterGroup) {
-	r.router.POST("/", courseController.Create) //add data
-	r.router.GET("/", courseController.Read)    //find all
-
 	course := rg.Group("/course")
-	course.GET("/:id", courseController.Read)      //find one
-	course.PUT("/:id", courseController.Update)    //update one
-	course.DELETE("/:id", courseController.Delete) //delete one
+	course.POST("/", courseController.Create) //add data
+	course.GET("/", courseController.Read)    //find all
+
+	oneCourse := rg.Group("/course")
+	oneCourse.GET("/:id", courseController.ReadOne)   //find one
+	oneCourse.PUT("/:id", courseController.Update)    //update one
+	oneCourse.DELETE("/:id", courseController.Delete) //delete one
 }
