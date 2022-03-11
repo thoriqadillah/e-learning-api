@@ -31,7 +31,7 @@ func SetupDB() {
 	})
 
 	if err != nil {
-		panic(err.Error())
+		panic("Error connecting database : " + err.Error())
 	}
 
 	DB = db
@@ -41,7 +41,7 @@ func SetupDB() {
 func CloseDB() {
 	dbCon, err := DB.DB()
 	if err != nil {
-		panic(err.Error())
+		panic("Error closing database : " + err.Error())
 	}
 
 	dbCon.Close()
