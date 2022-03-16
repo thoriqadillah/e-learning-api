@@ -7,6 +7,9 @@ import (
 )
 
 func main() {
+	config.SetupDB()
+	defer config.CloseDB()
+
 	config.DB.AutoMigrate(&models.Mahasiswa{}, &models.Course{})
 	seed(config.DB)
 }
