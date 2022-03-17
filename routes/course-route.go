@@ -10,11 +10,10 @@ var courseController services.Crud = controllers.NewCourseController()
 
 func (r *routes) courseRoute(rg *gin.RouterGroup) {
 	course := rg.Group("/course")
-	course.POST("/", courseController.Create) //add data
-	course.GET("/", courseController.Read)    //find all
 
-	oneCourse := rg.Group("/course")
-	oneCourse.GET("/:id", courseController.ReadOne)   //find one
-	oneCourse.PUT("/:id", courseController.Update)    //update one
-	oneCourse.DELETE("/:id", courseController.Delete) //delete one
+	course.POST("/", courseController.Create)      //add data
+	course.GET("/", courseController.Read)         //find all
+	course.GET("/:id", courseController.ReadOne)   //find one
+	course.PUT("/:id", courseController.Update)    //update one
+	course.DELETE("/:id", courseController.Delete) //delete one
 }
